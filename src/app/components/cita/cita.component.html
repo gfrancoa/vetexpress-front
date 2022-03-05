@@ -1,0 +1,149 @@
+<div class="center">
+  <img src="assets/expressvet.png" alt="logo" width="120rem" height="120rem" />
+  <h1 style="font-style: italic">Módulo de citas</h1>
+</div>
+
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Datos Solicitante</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre Solicitante</mat-label>
+        <input
+          matInput
+          placeholder="Nombre y Apellido"
+          formControlName="nombre"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>ID Solicitante</mat-label>
+        <input matInput placeholder="Cédula" formControlName="id" required />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Datos de la cita">
+    <form [formGroup]="secondFormGroup">
+      <div style="display: flex; flex-direction: column">
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha y hora</mat-label>
+          <!-- <input
+          matInput
+          formControlName="fecha"
+          placeholder="Escoge fecha y hora"
+          required
+        /> -->
+
+          <input
+            required
+            matInput
+            [ngxMatDatetimePicker]="picker"
+            placeholder="Escoge fecha y hora"
+            formControlName="fecha"
+            [min]="minDate"
+            
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="$any(picker)"
+            
+          ></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker
+            #picker
+            [defaultTime]="defaultTime"
+            [stepMinute]="stepMinute"
+            [enableMeridian]="enableMeridian"
+            [disableMinute]="disableMinute"
+            
+          >
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <textarea
+            matInput
+            formControlName="descripcion"
+            placeholder="Describe brevemente qué sintomas presenta tu mascota"
+            required
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Confirma tus datos</ng-template>
+    <h3>Detalles de la cita</h3>
+    <p>Nombre solicitante: {{ firstFormGroup.controls["nombre"].value }}</p>
+    <p>Cédula solicitante: {{ firstFormGroup.controls["id"].value }}</p>
+    <p>Fecha: {{ secondFormGroup.controls["fecha"].value | date:'full' }}</p>
+    <p>Descripción: {{ secondFormGroup.controls["descripcion"].value }}</p>
+    <div>
+      <button mat-button matStepperPrevious>Atrás</button>
+      <button
+        mat-button
+        [disabled]="!secondFormGroup.valid || !firstFormGroup.valid"
+        (click)="enviar()"
+      >
+        Enviar
+      </button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+<mat-card class="center">
+   <mat-card-title>
+       ¿Quieres cancelar tu cita? 
+   </mat-card-title>
+   <mat-card-subtitle>
+       Cancela fácil dando click aquí
+   </mat-card-subtitle>
+    <button
+        *ngIf="!showForm"
+        style="margin-bottom: 10px;"
+        mat-stroked-button
+        color="primary"
+        (click)="showForm=true"
+      >Cancelar mi cita</button>
+
+      <div *ngIf="showForm">
+        <form [formGroup]="formCancelar" style="display: flex; flex-direction: column;">
+             <mat-form-field appearance="fill">
+          <mat-label>ID Reserva</mat-label>
+          <input
+            matInput
+            formControlName="uuid"
+            placeholder="Escribe el id de tu reserva"
+            required
+          >
+        
+        </mat-form-field>
+
+         <mat-form-field appearance="fill">
+          <mat-label>Observación</mat-label>
+          <textarea
+            matInput
+            formControlName="observacion"
+            placeholder="Escribe por qué cancelas tu cita"
+            required
+          ></textarea>
+        </mat-form-field>
+          <button
+          color="warn"
+        mat-raised-button
+        [disabled]="!formCancelar.valid"
+        (click)="cancelarReserva()"
+      >
+        Cancelar Reserva
+      </button>
+        </form>
+      </div>
+
+</mat-card>

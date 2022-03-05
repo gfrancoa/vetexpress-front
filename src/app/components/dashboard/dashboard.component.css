@@ -1,0 +1,52 @@
+label{
+    font-weight: 600;
+}
+
+td{
+    text-align: center;
+}
+
+thead tr{
+    font-weight: 600;
+}
+
+.btn-g{
+    background-color: #8A7965;
+    color: #fff;
+    border-radius: 0.3rem;
+   
+    margin: 2px;
+    border-color: transparent;
+
+}
+
+.btn-outline{
+    background-color: white;
+    color: rgb(10, 10, 100);
+   
+    border-radius: 0.3rem;
+    
+    border: rgb(10, 10, 100) solid 1px;
+
+    margin:2px
+}
+
+.btn-outline-d{
+    background-color: white;
+    color: grey;
+   
+    border-radius: 0.3rem;
+    
+    border: white;
+    cursor:default;
+    margin:2px
+}
+
+h2{
+    color: blue;
+}
+
+thead th{
+    color:rgb(10, 10, 100);
+}
+

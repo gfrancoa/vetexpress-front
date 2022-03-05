@@ -1,0 +1,185 @@
+<div>
+<mat-toolbar color="primary" class="toolbar-contact">
+  <div class="banner">
+    <a href="tel:3057759208">+57 (305) 775-9208</a>
+    <span>&nbsp; |&nbsp; </span>
+    <a href="mailto:info@expressvet.com">info@expressvet.com</a>
+    <span>&nbsp; |&nbsp;</span>
+    <button mat-icon-button>
+      <mat-icon aria-hidden="false">facebook</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-toolbar color="secondary" class="toolbar-nav">
+  <mat-toolbar-row>
+    <img
+      class="center"
+      src="assets/expressvet.png"
+      alt="logo"
+      width="120rem"
+      height="120rem"
+    />
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <div class="center tab-bar">
+      <a href="#about-us">
+        <button mat-button style="color: black">Sobre nosotros</button></a
+      >
+      <a href="#services">
+        <button mat-button style="color: black">Nuestros servicios</button></a
+      >
+      <a href="#services">
+        <button mat-button style="color: black">Contáctanos</button></a
+      >
+      <button [routerLink]="'reserva'"  mat-stroked-button color="warn">Reserva tu cita</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<video autoplay muted loop id="myVideo">
+  <source src="assets/bannervideo.mp4" type="video/mp4" />
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="video-text">
+  <img src="assets/expressvet.png" alt="logo" width="400px" height="400px" />
+  <div class="video-text-center">
+    <h1 class="center-text">Express Vet Clínica Veterinaria</h1>
+    <h3 class="center-text">Excelencia. Tratamiento de Calidad. Compasión</h3>
+  </div>
+
+  <div class="center-text">
+ 
+    <a href="#services">
+       <button style="font-size: 25px; padding: 10px;color: black" mat-stroked-button>
+      Contáctanos
+    </button>
+    </a>
+     
+    <button
+      mat-raised-button
+      style="font-size: 25px; padding: 10px"
+      color="warn"
+      [routerLink]="'reserva'"
+    >
+      Reserva tu cita
+    </button>
+  </div>
+</div>
+
+<div class="about-us-container" id="about-us">
+  <h1 class="title">Sobre nosotros</h1>
+  <p class="about-us-text">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. A sint vitae sunt
+    tempore doloribus optio, quo expedita itaque dicta cupiditate corporis
+    repudiandae quae blanditiis architecto nihil maxime error soluta ab iure
+    perferendis ratione totam ipsum. Ipsa ut ipsum porro, magni doloribus rerum
+    sequi tenetur ad esse sit, numquam hic illum, voluptates neque nostrum
+    dolorum! Officia expedita laudantium vitae ratione?
+  </p>
+</div>
+
+<div id="services">
+  <h1 class="title">Nuestros servicios</h1>
+  <div class="services-container">
+    <div class="card-container">
+      <button mat-fab color="primary" class="button-service">
+        <mat-icon aria-hidden="false" class="button-service-icon"
+          >favorite</mat-icon
+        >
+      </button>
+
+      <p class="service-text">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro
+        assumenda ipsam odit illo iure quisquam. Autem harum culpa unde neque.
+      </p>
+    </div>
+    <div class="card-container">
+      <button mat-fab color="secondary" disabled class="button-service">
+        <mat-icon
+          class="button-service-icon"
+          class="button-service-icon"
+          aria-hidden="false"
+          >pets</mat-icon
+        >
+      </button>
+
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro
+        assumenda ipsam odit illo iure quisquam. Autem harum culpa unde neque.
+      </p>
+    </div>
+
+    <div class="card-container">
+      <button mat-fab color="accent" class="button-service">
+        <mat-icon aria-hidden="family" class="button-service-icon"
+          >healing</mat-icon
+        >
+      </button>
+
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro
+        assumenda ipsam odit illo iure quisquam. Autem harum culpa unde neque.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="contact-container" id="contact">
+  <h1 class="title">Contáctanos</h1>
+  <div style="display: flex; padding: 2rem; justify-content: space-between">
+    <google-map [center]="center">
+      <map-marker
+        [position]="center"
+        [label]="'Express Vet'"
+        width="100px"
+        height="100px"
+      >
+      </map-marker>
+    </google-map>
+
+
+    <div>
+      <h2>Nuestra Ubicación</h2>
+      <h3>Calle de la Trinidad #45-26. Turbaco, Bolívar</h3>
+      <h3>
+        Teléfono: <span><a href="tel:3057759208">+57 (305) 775-9208</a></span>
+      </h3>
+      <h3>
+        Correo electrónico:
+        <span
+          ><a href="mailto:info@expressvet.com">info@expressvet.com</a></span
+        >
+      </h3>
+
+      <br />
+
+      <h2>Horarios</h2>
+      <h3>
+        Estamos abiertos 7 días a la semana. Después de las horas de atención
+        solo atendemos urgencias.
+      </h3>
+      <h3>Lunes a viernes: 8am - 7pm</h3>
+      <h3>Sábados y Domingos: 9am - 12m</h3>
+    </div>
+  </div>
+</div>
+  <mat-toolbar color="primary" class="toolbar-contact">
+      
+      <mat-toolbar-row>
+        <div class="banner">
+        <p>© 2022 ExpressVet Clínica Veterinaria</p>
+      </div>
+      </mat-toolbar-row>
+   
+  </mat-toolbar>
+  
+    <button mat-fab color="primary" class="floating-button" [routerLink]="'reserva'">
+        <mat-icon aria-hidden="false" 
+          >event</mat-icon
+        >
+      </button>
+</div>
+    

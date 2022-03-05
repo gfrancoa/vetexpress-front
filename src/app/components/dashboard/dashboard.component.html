@@ -1,0 +1,84 @@
+<div style="text-align: center">
+  <h2>Dashboard de Reservas</h2>
+  <!-- <button type="button" class="btn btn-success">Crear un pedido</button> -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>UUID</th>
+        <th>Solicitante</th>
+        <th>ID Solicitante</th>
+        <th>Fecha cita</th>
+        <!-- <th>Observaciones</th> -->
+        <th>Observaciones</th>
+        <th>Status</th>
+        <th>Comentarios</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of reservas | paginate: config">
+        <td>{{ item.uuid }}</td>
+        <td>
+          {{ item.nombre_solicitante }}
+        </td>
+        <td>
+          {{ item.id_solicitante }}
+        </td>
+        <td>{{ item.fecha_cita | date: "full" }}</td>
+        <td>{{ item.descripcion }}</td>
+        <td>{{ item.status | titlecase }}</td>
+        <td>{{ item.comentario | json }}</td>
+        <td>
+          <button
+            (click)="selectItem(item)"
+            [ngClass]="{
+              'btn-outline-d':
+                item.status == 'cancelado' || item.status == 'completado',
+              'btn-outline':
+                item.status != 'cancelado' || item.status != 'completado'
+            }"
+            [disabled]="
+              item.status == 'cancelado' || item.status == 'completado'
+            "
+          >
+            {{
+              item.status == "reservado"
+                ? "ACTIVAR"
+                : item.status == "activo"
+                ? "TERMINAR"
+                : item.status == "completado"
+                ? "CITA COMPLETADA"
+                : "CITA CANCELADA"
+            }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls
+    previousLabel="Anterior"
+    nextLabel="Siguiente"
+    class="custom-pagination"
+    (pageChange)="pageChanged($event)"
+  ></pagination-controls>
+
+  <div *ngIf="showInput" style="display: flex;flex-direction: column;padding-left:  5rem;padding-right: 5rem;">
+    <mat-form-field appearance="fill">
+      <mat-label>Observación</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="observacion"
+        placeholder="Escribe comentario"
+      ></textarea>
+    </mat-form-field>
+
+    <button
+      color="warn"
+      mat-raised-button
+      [disabled]="observacion.length==0"
+      (click)="cambiarStatus()"
+    >
+      ENVIAR
+    </button>
+  </div>
+</div>
